@@ -1,0 +1,49 @@
+{
+  "name": "rxjs-addons",
+  "description": "Rx add-ons",
+  "version": "0.0.0",
+  "private": true,
+  "author": {
+    "name": "Stanislaw Glogowski",
+    "email": "hello@newobject.pl"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stanislaw-glogowski/rxjs-addons.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stanislaw-glogowski/rxjs-addons/issues"
+  },
+  "scripts": {
+    "clean": "rimraf ./dist/*",
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "postbuild": "tempack",
+    "lint": "tslint src/**/*.ts",
+    "test": "jest",
+    "test:watch": "jest --watch --verbose false"
+  },
+  "dependencies": {
+    "rxjs": "^6.3.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.2",
+    "jest": "^23.6.0",
+    "rimraf": "^2.6.2",
+    "tempack": "^1.1.0",
+    "ts-jest": "^23.1.4",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.3"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(\\.spec)\\.ts$",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ]
+  }
+}
