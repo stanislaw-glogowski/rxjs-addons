@@ -1,4 +1,5 @@
 import { BehaviorSubject } from "rxjs";
+import { deepEqual } from "deep-equal-extended";
 import { IUniqueBehaviorSubjectOptions } from "./interfaces";
 
 /**
@@ -11,7 +12,7 @@ export class UniqueBehaviorSubject<T = any> extends BehaviorSubject<T> {
    * @param valueA
    * @param valueB
    */
-  public static defaultCompare: IUniqueBehaviorSubjectOptions<any>["compare"] = (valueA, valueB) => valueA === valueB;
+  public static defaultCompare: IUniqueBehaviorSubjectOptions<any>["compare"] = deepEqual;
 
   /**
    * constructor
