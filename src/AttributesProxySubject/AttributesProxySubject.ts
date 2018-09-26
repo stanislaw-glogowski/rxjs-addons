@@ -125,9 +125,10 @@ export class AttributesProxySubject<T, K extends keyof T = keyof T> implements I
    * @param value
    */
   protected setAttribute(name: K, value: T[K]): void {
-    const attributes: any = this.attributes || {};
-    attributes[ name ] = value;
-    this.attributes = attributes;
+    this.attributes = ({
+      ...(this.attributes || {}),
+      [name]: value,
+    }) as any;
   }
 
   /**

@@ -8,35 +8,61 @@
 $ npm i rxjs-addons -S
 ```
 
-## Usage
+## Example usage
 
 ### `AttributesProxySubject`
 
-(COMING SOON)
+```js
+import { AttributesProxySubject } from "rxjs-addons";
+const subject = new AttributesProxySubject({
+  a: 1,
+  b: 2,
+}, {
+  schema: {
+    a: {
+      getter: true,
+      setter: true
+    },
+    b: {
+      subject,
+    },
+  },
+});
+
+console.log(subject.a) // 1
+console.log(subject.b) // undefined
+
+subject.b$.subscribe((value) => console.log("b:", value));
+
+/*
+  b: 2
+ */
+
+```
 
 ### `ErrorSubject`
 
-```typescript
+```js
 import { ErrorSubject } from "rxjs-addons";
-const errorSubject = new ErrorSubject();
+const subject = new ErrorSubject();
 
-errorSubject.subscribe((err) => console.error(err));
+subject.subscribe((err) => console.error(err));
 
 // regular catch
 try {
   throw new Error("Error");
 } catch (err) {
-  errorSubject.error(err); // or errorSubject.next(err); 
+  subject.error(err); // or errorSubject.next(err); 
 }
 
 // wrapping promise or async function 
-errorSubject.wrapAsync(async () => {
+subject.wrapAsync(async () => {
   throw new Error("Error");
 });
-errorSubject.wrapAsync(Promise.reject(new Error("Error")));
+subject.wrapAsync(Promise.reject(new Error("Error")));
 
 // wrapping promise or async function and return promise
-errorSubject
+subject
   .wrapTAsync<string>(async () => {
     ... // 
     return "value";
@@ -46,7 +72,27 @@ errorSubject
 
 ### `UniqueBehaviorSubject`
 
-(COMING SOON)
+```js
+import { UniqueBehaviorSubject } from "rxjs-addons";
+const subject = new UniqueBehaviorSubject(1); // with default value
+
+console.log(subject.value); // 1
+
+subject.next(2);
+subject.next(2);
+subject.next(2);
+subject.next(3);
+subject.next(3);
+
+subject.subscribe((value) => console.log("value:", value));
+
+/*
+  value: 1
+  value: 2
+  value: 3
+ */
+
+```
 
 ## Testing
 
