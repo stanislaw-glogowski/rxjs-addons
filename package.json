@@ -25,17 +25,17 @@
     "test:watch": "jest --watch --verbose false"
   },
   "dependencies": {
-    "deep-equal-extended": "0.0.1",
-    "rxjs": "^6.3.2"
+    "deep-equal-extended": "0.0.2",
+    "rxjs": "^6.3.3"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.2",
+    "@types/jest": "^23.3.12",
     "jest": "^23.6.0",
-    "rimraf": "^2.6.2",
+    "rimraf": "^2.6.3",
     "tempack": "^1.1.0",
-    "ts-jest": "^23.1.4",
-    "tslint": "^5.11.0",
-    "typescript": "^3.0.3"
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2"
   },
   "jest": {
     "transform": {
